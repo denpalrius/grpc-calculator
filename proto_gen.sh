@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the proto file and output directory
-PROTO_FILE="calc.proto"
+PROTO_FILE="square.proto"
 OUTPUT_DIR="./"
 
 # Create the output directory if it doesn't exist
