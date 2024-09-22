@@ -3,14 +3,14 @@ syntax = "proto3";
 package calc;
 
 service SquareService {
-  rpc Square(Number) returns (Result) {}
+  rpc GetSquare(Number) returns (Result) {}
 }
 
 message Number {
-  int32 number = 1;
+  int32 value = 1;
 }
 
 message Result {
-  int32 number = 1;
+  int32 value = 1;
 }
 
