@@ -4,7 +4,3 @@ __pycache__/
 
 # Environments
 .venv
-
-# Protocol Buffers
-*_pb2.py
-*_pb2_grpc.py

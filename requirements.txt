@@ -1,2 +1,8 @@
 grpcio
 grpcio-tools
+
+# The [compiler] feature flag tells it to install extra dependencies only needed by the protoc plugin:
+betterproto[compiler]
+
+# Provides an improved experience when using Protobuf / gRPC in a modern Python environment
+betterproto
