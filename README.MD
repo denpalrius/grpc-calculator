@@ -1,57 +1,76 @@
-# gRPC Square Calculator
+# gRPC Calculator Service
 
-This project is a gRPC-based square calculator service that computes the square of a given number. The service is implemented in `Python` and uses the gRPC framework for communication.
+This is a gRPC service for basic arithmetic operations (addition, subtraction, multiplication, division) using Protocol Buffers for efficient communication between server and client.
 
-## Project Structure
+## Features
 
-- **square.proto**: Protocol Buffers definition file that describes the gRPC service and messages.
-- **square_pb2.py**: Generated Python code from the `square.proto` file (contains message classes).
-- **square_pb2_grpc.py**: Generated Python code from the `square.proto` file (contains service classes).
-- **server.py**: Implementation of the gRPC server that provides the square calculator service.
-- **client.py**: Implementation of a gRPC client that interacts with the square calculator service.
+- **Addition, Subtraction, Multiplication, Division**: Perform arithmetic operations on two float numbers.
+- **gRPC Server**: Serves calculation requests.
+- **gRPC Client**: Sends simulated calculation requests and receives responses.
 
-## Getting Started
-
-### Installation
+## Setup
 
 1. Clone the repository:
 
-    ```sh
+    ```bash
     git clone https://github.com/denpalrius/grpc-calculator
     cd grpc-calculator
     ```
 
-2. Install the required packages using the `requirements.txt` file:
+2. Create and activate a new conda environment:
 
-    ```sh
+    ```bash
+    # Use your own Python version
+    conda create --name rpc_env python=3.12 -y
+    conda activate rpc_env
+    ```
+
+3. Install Python dependencies:
+
+    ```bash
     pip install -r requirements.txt
     ```
 
-### Generate gRPC Code Using Bash Script
+4. Generate gRPC code:
 
-You can also use the provided `generate_proto.sh` script to regenerate the gRPC code:
+    ```bash
+    ./proto_gen.sh
+    ```
 
-```sh
-./proto_gen.sh
+    This will generate the gRPC python code in the `./schema` directory
+
+## Running
+
+1. Start the gRPC server:
+
+    ```bash
+    PYTHONPATH=$PYTHONPATH:. python src/server.py
+    ```
+
+2. In another terminal, run the gRPC client:
+
+    ```bash
+    PYTHONPATH=$PYTHONPATH:. python src/client.py
+    ```
+
+## Project Structure
+
+- **client.py**: gRPC client to perform operations.
+- **server.py**: gRPC server to handle requests.
+- **calculator_service.py**: Implements the calculator service logic.
+- **calculator.proto**: Protocol Buffers definition.
+- **proto_gen.sh**: Script to generate gRPC Python code from `.proto` files.
+
+## Example Output
+
+```bash
+The sum of 10.5 and 7.3 is 17.8
+The difference when subtracting 7.3 from 10.5 is 3.2
+The product of 10.5 and 7.3 is 76.65
+The quotient of 10.5 divided by 7.3 is 1.44
 ```
 
-### Running the Server
+## Notes
 
-Start the gRPC server:
-
-```sh
-python server.py
-```
-
-### Running the Client
-
-In another terminal, run the gRPC client:
-
-```sh
-python client.py
-```
-
-## Acknowledgements
-
-- [gRPC](https://grpc.io/)
-- [Protocol Buffers](https://developers.google.com/protocol-buffers)
+- The server listens on `localhost:50051`.
+- Ensure both server and client are using the same port.
